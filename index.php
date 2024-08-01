@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+require_once('database/conn.php');
+
+?><!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -26,7 +29,7 @@
                 <input type="checkbox" nome="progress" class="progress">
 
             <p class="task-description">
-                Tema de casa
+                Nova tarefa à fazer
             </p>
 
             <div class="task-actions">
