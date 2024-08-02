@@ -23,7 +23,7 @@ $(document).ready(function(){
         const id = $(this).data('task-id');
         const completed = $(this).is(':checked') ? 'true' : 'false';
         $.ajax({
-            url: '../../actions/update-progress.php',
+            url: '/actions/update-progress.php',
             method: 'POST',
             data: {id: id, completed: completed},
             dataType: 'json',
@@ -34,9 +34,9 @@ $(document).ready(function(){
                     alert('Erro ao editar a tarefa');
                 }
             },
-            error: function () {
-                alert('Ocorreu um erro');
-            }
+            // error: function () {
+            //     alert('Ocorreu um erro');
+            // }
         });
     })
 
