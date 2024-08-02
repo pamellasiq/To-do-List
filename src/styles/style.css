@@ -117,7 +117,6 @@ body{
     color: #533a5d;
     background-color: #fff;
     padding: 8px 12px;
-    border-radius: 4px;
     border-bottom: 2px solid #533a5d;
 }
 
@@ -148,10 +147,20 @@ body{
 
 .action-button.edit-button{
     color: #986baa;
+    transition: .5s;
+}
+.action-button.edit-button:hover{
+    transform: scale(1.2);
+    color: #21d466;
 }
 
 .action-button.delete-button{
     color: #986baa;
+}
+
+.action-button.delete-button:hover{
+    transform: scale(1.2);
+    color: #d42121;
 }
 
 .hidden {
