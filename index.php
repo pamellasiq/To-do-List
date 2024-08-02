@@ -21,6 +21,7 @@ if ($sql->rowCount() > 0){
     <title>To-do List</title>
 </head>
 <body>
+    <div id="shape"></div>
     <div id="to_do">
         <h1>Things to do</h1>
 
@@ -39,7 +40,7 @@ if ($sql->rowCount() > 0){
                     type="checkbox"
                     nome="progress"
                     class="progress <?= $task['completed'] ? 'done' : '' ?>"
-                    data-task-id="<?=$task['id'] ?>"
+                    data-task-id="<?=$task['id']?>"
                     <?= $task['completed'] ? 'checked' : '' ?>
                 >
 
@@ -52,18 +53,18 @@ if ($sql->rowCount() > 0){
                     <i class="fa-solid fa-pen-to-square"></i>
                 </a>
 
-                <a href="actions/delete.php?id=<?=$task['id'] ?>" class="action-button delete-button">
+                <a href="actions/delete.php?id=<?=$task['id']?>" class="action-button delete-button">
                     <i class="fa-solid fa-trash-can"></i>
                 </a>
             </div>
 
             <form action="actions/update.php" method="POST" class="to-do-form edit-task hidden">
-                <input type="text" class="hidden" name="id" value="<?= $task['id'] ?>">
+                <input type="text" class="hidden" name="id" value="<?= $task['id']?>">
                 <input
                     type="text"
                     name="description"
                     placeholder="Edit your task here"
-                    value="<?=$task['description'] ?>"
+                    value="<?=$task['description']?>"
                 >
                 <button type="submit" class="form-button confirm-button">
                     <i class="fa-solid fa-check"></i>
