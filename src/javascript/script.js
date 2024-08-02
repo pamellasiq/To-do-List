@@ -19,4 +19,25 @@ $(document).ready(function(){
         }
     });
 
+    $('.progress').on('change', function(){
+        const id = $(this).data('task-id');
+        const completed = $(this).is(':checked') ? 'true' : 'false';
+        $.ajax({
+            url: '../../actions/update.php',
+            method: 'POST',
+            data: {id: id, completed: completed},
+            dataType: 'json',
+            success: function (response){
+                if(response.success) {
+
+                }else{
+                    alert('Erro ao editar a tarefa');
+                }
+            },
+            error: function (){
+                alert('Ocorreu um erro');
+            }
+        });
+    });
+
 });

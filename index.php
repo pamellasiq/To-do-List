@@ -1,6 +1,15 @@
 <?php
 require_once('database/conn.php');
 
+$tasks = [];
+
+$sql = $pdo->query("SELECT * FROM task ORDER BY id ASC"); //ordena pelo id
+
+if ($sql->rowCount() > 0){
+    $tasks = $sql->fetchAll(PDO::FETCH_ASSOC);
+    // var_dump($tasks); para testar o que o select está puxando
+}
+
 ?><!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,7 +24,7 @@ require_once('database/conn.php');
     <div id="to_do">
         <h1>Things to do</h1>
 
-        <form action="" class="to-do-form">
+        <form action="actions/create.php" method="POST" class="to-do-form">
             <!-- required = obrigatório -->
             <input type="text" name="description" placeholder="Write your task here" required>
             <button type="submit" class="form-button">
@@ -24,12 +33,18 @@ require_once('database/conn.php');
         </form>
 
         <div id="tasks">
-
+            <?php foreach ($tasks as $task): ?>
             <div class="task">
-                <input type="checkbox" nome="progress" class="progress">
+                <input
+                    type="checkbox"
+                    nome="progress"
+                    class="progress <?= $task['completed'] ? 'done' : '' ?>"
+                    data-task-id="<?=$task['id'] ?>"
+                    <?= $task['completed'] ? 'checked' : '' ?>
+                >
 
             <p class="task-description">
-                Nova tarefa à fazer
+                <?=$task['description'] ?>
             </p>
 
             <div class="task-actions">
@@ -37,20 +52,26 @@ require_once('database/conn.php');
                     <i class="fa-solid fa-pen-to-square"></i>
                 </a>
 
-                <a href="#" class="action-button delete-button">
+                <a href="actions/delete.php?id=<?=$task['id'] ?>" class="action-button delete-button">
                     <i class="fa-solid fa-trash-can"></i>
                 </a>
             </div>
 
-            <form action="" class="to-do-form edit-task hidden">
-                <input type="text" name="description" placeholder="Edit your task here">
+            <form action="actions/update.php" method="POST" class="to-do-form edit-task hidden">
+                <input type="text" class="hidden" name="id" value="<?= $task['id'] ?>">
+                <input
+                    type="text"
+                    name="description"
+                    placeholder="Edit your task here"
+                    value="<?=$task['description'] ?>"
+                >
                 <button type="submit" class="form-button confirm-button">
                     <i class="fa-solid fa-check"></i>
                 </button>
             </form>
 
             </div>
-
+            <?php endforeach ?>
         </div>
     </div>
 
