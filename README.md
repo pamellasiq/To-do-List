@@ -20,7 +20,7 @@ lista de tarefas de maneira eficiente.
 
 Assista a um vídeo de demonstração:
 
-![Video](https://i.imgur.com/I2CE5vQ.gif) 
+![Video](https://i.imgur.com/uOaNQC6.gif) 
 
 ## Instalação
 
